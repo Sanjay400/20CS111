@@ -7,6 +7,19 @@ app.get("/numbers",async(req,res)=>{
 
     const urls = req.query.url;
     
+    if(typeof urls =="string"){
+
+        let resp = await getNumbers(urls);
+       
+        if(resp!=false && resp.numbers!=undefined){
+            
+           //console.log(resp.numbers)
+           res.send(resp.numbers);
+           return;
+        }
+    }
+    
+    
     
     let numbers = [];
 
